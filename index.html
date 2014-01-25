@@ -1,0 +1,145 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Its Continuous!</title>
+    <link rel="stylesheet" href="css/foundation.css"/>
+    <script src="js/modernizr.js"></script>
+</head>
+<body>
+
+<div class="row">
+    <div class="medium-12 columns">
+        <h1>Its Continuous!</h1>
+
+        <p>The tweet-sized continuous integration app for PHP development.</p>
+    </div>
+</div>
+
+<div class="row panel">
+    <div class="medium-12 columns">
+        <h2>What is continuous integration?</h2>
+        <blockquote>
+            <p>Continuous Integration is a software development practice where members of a team integrate their work
+                frequently, usually each person integrates at least daily - leading to multiple integrations per day.
+                Each <strong>integration is verified by an automated build</strong> (including test) to detect
+                integration errors as quickly as possible.</p>
+            <cite><a href="https://twitter.com/martinfowler">Martin Fowler</a>'s article on <a
+                    href="http://martinfowler.com/articles/continuousIntegration.html">Continuous Integration</a></cite>
+        </blockquote>
+
+        <p>
+            Thanks to great packages like <a href="http://getcomposer.org/">Composer</a>, <a
+                href="http://phpunit.de/">PHPUnit</a>, <a href="https://github.com/padraic/mockery">Mockery</a> and many
+            others, writing tests for your PHP application is almost trivial. And if you're willing to invest a little
+            bit of time there are some fantastic tools out there that will automatically run those tests for you when
+            you push a new commit. Unfortunately, there hasn't been a tool that would constantly monitor your codebase
+            as you work and report back the current status of your test suite in real time.
+        </p>
+
+        <p><strong>Until now.</strong> Welcome to Its Continuous. The little tweet-sized continuous integration app that
+            will change your development practices in a big way.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="medium-12 columns">
+        <h2>What's it do?</h2>
+
+        <img src="img/tdd.png" alt="TDD screenshot" class="right medium-4"/>
+
+        <p>Continuously running tests while you're writing code reveals bugs early. Unfortunately, the more tests you
+            write, the longer it takes to run the entire test suite and the less likely you are to wait around for it.
+            Its Continuous will run your tests for you so you don't have to think about it. Just start it up and leave
+            it running; you'll see it flash red when tests start failing and have the satisfaction of watching them turn
+            green as you bring things back into order. </p>
+
+        <p> Its immediate feedback that can only make things better. <a
+                href="http://en.wikipedia.org/wiki/Test-driven_development">Test driven development</a> has never been
+            easier.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="medium-12 columns">
+        <hr/>
+    </div>
+</div>
+
+<div class="row">
+    <div class="medium-12 columns">
+        <h2>The Setup</h2>
+    </div>
+    <div class="medium-6 columns">
+        <p>There's not much to it, really, just make sure you
+            <a href="http://phpunit.de/manual/current/en/installation.html#installation.composer">install PHPUnit with
+                composer.</a> Copy the script into your <code>~/.bash_profile</code>, restart the terminal, type
+            <code>tdd</code> from your project directory and watch the magic happen.</p>
+    </div>
+
+    <div class="medium-6 columns">
+        <pre class="panel"><code>function tdd {
+    while :; do
+        O=`vendor/bin/phpunit`
+        clear; echo "$O";
+        sleep 1;
+    done
+}</code></pre>
+    </div>
+
+    <div class="medium-12 columns">
+        <p>Your test suite will start running immediately and give you the latest results in the terminal. The great
+            thing is that as soon as it gets your results it immediately runs the tests again "in the background" and
+            seamlessly updates the terminal without any distracting flickers.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="medium-12 columns">
+        <hr/>
+    </div>
+</div>
+
+<div class="row">
+    <div class="medium-6 columns">
+        <h2>Writing Extensions</h2>
+
+        <p>Because Its Continuous has standardized its development on shell scripts its easy to write and share your own
+            custom extensions. Simply write the additional functionality, copy it into a <a
+                    href="https://gist.github.com/">Gist</a> and send us a pull request with a link to your code. We'll
+            feature it right here on the home page for everyone to see. Here's some ideas to get you started:</p>
+
+        <ul>
+            <li><a href="http://apple.stackexchange.com/a/115373/26415">Send OS X style notifications</a> on failure.</li>
+        </ul>
+    </div>
+    <div class="medium-6 columns">
+        <h2>Further resources</h2>
+
+        <p>Its Continuous is a great tool for the lone developer, but to truly get the most out of your tests you should
+            use a stand-alone continuous integration server.</p>
+
+        <a href="http://jenkins-ci.org/" class="small button" style="width: 100%">Jenkins</a>
+        <a href="https://travis-ci.org/" class="small button" style="width: 100%">Travis CI</a>
+        <a href="http://www.phptesting.org/" class="small button" style="width: 100%">PHP CI</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="medium-12 columns text-center" style="margin: 1em 0; opacity: 0.75; font-size: 0.9em;">
+        @2014
+        - Jake A. Smith
+        - Follow me on <a href="http://twitter.com/jakeasmith">Twitter</a>
+        - Read my <a href="http://jakeasmith.com">blog</a>
+    </div>
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
+</body>
+</html>
