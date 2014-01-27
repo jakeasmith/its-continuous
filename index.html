@@ -13,7 +13,7 @@
     <div class="medium-12 columns">
         <h1>Its Continuous!</h1>
 
-        <p>The tweet-sized continuous integration app for PHP development.</p>
+        <p>The <a href="https://twitter.com/jakeasmith/status/426486307716878336">tweet-sized</a> continuous integration app for PHP development.</p>
     </div>
 </div>
 
@@ -79,12 +79,14 @@
     </div>
 
     <div class="medium-6 columns">
-        <pre class="panel"><code>function tdd {
-    while :; do
-        O=`vendor/bin/phpunit`
-        clear; echo "$O";
-        sleep 1;
-    done
+        <pre class="panel"><code># TDD CI
+function tdd {
+  while true; do 
+    NEW=$(vendor/bin/phpunit);
+    clear;
+    echo "$NEW";
+    sleep 1; 
+  done
 }</code></pre>
     </div>
 
