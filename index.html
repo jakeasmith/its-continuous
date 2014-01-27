@@ -72,28 +72,39 @@
         <h2>The Setup</h2>
     </div>
     <div class="medium-6 columns">
-        <p>There's not much to it, really, just make sure you
-            <a href="http://phpunit.de/manual/current/en/installation.html#installation.composer">install PHPUnit with
-                composer.</a> Copy the script into your <code>~/.bash_profile</code>, restart the terminal, type
-            <code>tdd</code> from your project directory and watch the magic happen.</p>
+        <p>Thanks to the suggestions of <a href="https://twitter.com/LukeCarrier/status/427619989391032320">@Luke
+            Carrier</a> and <a href="https://news.ycombinator.com/item?id=7128447">Gigablah</a> the
+            <a href="https://twitter.com/jakeasmith/status/426486307716878336">original script</a> has been rewritten.
+            Instead of burning up CPU cycles to constantly run your tests it is now smart enough to only run tests when
+            you have updated your code. Setup just requires a few easy steps.
+        </p>
+
+        <ol>
+            <li>Make sure you <a href="http://phpunit.de/manual/current/en/installation.html#installation.composer">install PHPUnit with composer</a>.</li>
+            <li>Use <a href="http://brew.sh/">homebrew</a> to install <a href="https://github.com/alandipert/fswatch">fswatch</a>.</li>
+            <li>Copy the app to your <code>~/.bash_profile</code>.</li>
+            <li>Restart your terminal and navigate to your project.</li>
+            <li>Type <code>tdd</code> and watch the magic happen.</li>
+        </ol>
+
+        <p>Your test suite will start running immediately and give you the latest results in the terminal. The great
+            thing is that as soon as update your code the app immediately runs the tests again "in the background" and
+            seamlessly updates the terminal without any distracting flickers.</p>
     </div>
 
     <div class="medium-6 columns">
+        <h3>First install fswatch with brew</h3>
+        <pre class="panel"><code>brew install fswatch</code></pre>
+
+        <h3>Paste into ~/.bash_profile</h3>
         <pre class="panel"><code># TDD CI
 function tdd {
-  while true; do 
-    NEW=$(vendor/bin/phpunit);
-    clear;
-    echo "$NEW";
-    sleep 1; 
-  done
+    clear; vendor/bin/phpunit
+    fswatch ./src:./lib:./tests \
+    'O=$(vendor/bin/phpunit); \
+    clear; \
+    echo "$O"'
 }</code></pre>
-    </div>
-
-    <div class="medium-12 columns">
-        <p>Your test suite will start running immediately and give you the latest results in the terminal. The great
-            thing is that as soon as it gets your results it immediately runs the tests again "in the background" and
-            seamlessly updates the terminal without any distracting flickers.</p>
     </div>
 </div>
 
@@ -114,7 +125,6 @@ function tdd {
 
         <ul>
             <li><a href="http://apple.stackexchange.com/a/115373/26415">Send OS X style notifications</a> on failure.</li>
-            <li><a href="https://twitter.com/LukeCarrier/status/427619989391032320">Watch the directory and only run the relevant tests.</a></li>
         </ul>
     </div>
     <div class="medium-6 columns">
