@@ -124,7 +124,7 @@
                     <pre class="panel"><code>brew install fswatch</code></pre>
 
                     <h3>Paste into ~/.bash_profile</h3>
-                    <pre class="panel"><code># Its Continuous
+                    <pre class="panel" style="overflow-y: scroll;"><code># Its Continuous
 function tdd {
     clear; vendor/bin/<span class="package-exec">phpunit</span>
     fswatch ./src:./lib:./tests \
