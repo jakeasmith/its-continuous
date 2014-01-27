@@ -16,7 +16,8 @@
             <small class="alert">v.2</small>
         </h1>
 
-        <p>The <a href="https://twitter.com/jakeasmith/status/427657389480091649">tweet-sized</a> continuous integration app for PHP development.</p>
+        <p>The <a href="https://twitter.com/jakeasmith/status/427657389480091649">tweet-sized</a> continuous integration
+            app for PHP development.</p>
     </div>
 </div>
 
@@ -64,57 +65,81 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="medium-12 columns">
-        <hr/>
-    </div>
-</div>
 
-<div class="row">
-    <div class="medium-12 columns">
-        <h2>The Setup</h2>
-    </div>
-    <div class="medium-6 columns">
-        <p>Thanks to the suggestions of <a href="https://twitter.com/LukeCarrier/status/427619989391032320">@Luke
-            Carrier</a> and <a href="https://news.ycombinator.com/item?id=7128447">Gigablah</a> the
-            <a href="https://twitter.com/jakeasmith/status/426486307716878336">original script</a> has been rewritten.
-            Instead of burning up CPU cycles to constantly run your tests it is now smart enough to only run tests when
-            you have updated your code. Setup just requires a few easy steps.
-        </p>
+<div class="row" style="border: #ccc solid 1px; margin-bottom: 1em;">
+    <div class="off-canvas-wrap">
+        <div class="inner-wrap">
+            <nav class="tab-bar">
+                <section class="left-small">
+                    <a class="left-off-canvas-toggle menu-icon"><span></span></a>
+                </section>
 
-        <ol>
-            <li>Make sure you <a href="http://phpunit.de/manual/current/en/installation.html#installation.composer">install PHPUnit with composer</a>.</li>
-            <li>Use <a href="http://brew.sh/">homebrew</a> to install <a href="https://github.com/alandipert/fswatch">fswatch</a>.</li>
-            <li>Copy the app to your <code>~/.bash_profile</code>.</li>
-            <li>Restart your terminal and navigate to your project.</li>
-            <li>Type <code>tdd</code> and watch the magic happen.</li>
-        </ol>
+                <section class="middle tab-bar-section">
+                    <h1 class="title">Using <span id="package-name">PHPUnit</span></h1>
+                </section>
+            </nav>
 
-        <p>Your test suite will start running immediately and give you the latest results in the terminal. The great
-            thing is that as soon as update your code the app immediately runs the tests again "in the background" and
-            seamlessly updates the terminal without any distracting flickers.</p>
-    </div>
+            <aside class="left-off-canvas-menu">
+                <ul class="off-canvas-list" id="package-list">
+                    <li><label>Choose your package</label></li>
+                    <li><a href="#" data-package="phpunit">PHPUnit</a></li>
+                    <li><a href="#" data-package="codecept">Codeception</a></li>
+                </ul>
+            </aside>
 
-    <div class="medium-6 columns">
-        <h3>First install fswatch with brew</h3>
-        <pre class="panel"><code>brew install fswatch</code></pre>
+            <section class="main-section">
+                <div class="medium-12 columns">
+                    <h2>The Setup</h2>
+                </div>
+                <div class="medium-6 columns">
+                    <p>Thanks to the suggestions of <a href="https://twitter.com/LukeCarrier/status/427619989391032320">@Luke
+                        Carrier</a> and <a href="https://news.ycombinator.com/item?id=7128447">Gigablah</a> the
+                        <a href="https://twitter.com/jakeasmith/status/426486307716878336">original script</a> has been
+                        rewritten. Instead of burning up CPU cycles to constantly run your tests it is now smart enough to only run
+                        tests when you have updated your code. Setup just requires a few easy steps.
+                    </p>
 
-        <h3>Paste into ~/.bash_profile</h3>
-        <pre class="panel"><code># TDD CI
+                    <ol id="setup-steps">
+                        <li>Make sure you
+                            <a class="package phpunit" href="http://phpunit.de/manual/current/en/installation.html#installation.composer">install PHPUnit with composer.</a>
+                            <a class="package codecept hide" href="http://codeception.com/install">install Codeception with composer.</a>
+                        </li>
+                        <li>Use <a href="http://brew.sh/">homebrew</a> to install <a
+                                href="https://github.com/alandipert/fswatch">fswatch</a>.
+                        </li>
+                        <li>Copy the app to your <code>~/.bash_profile</code>.</li>
+                        <li>Restart your terminal and navigate to your project.</li>
+                        <li>Type <code>tdd</code> and watch the magic happen.</li>
+                    </ol>
+
+                    <p>Your test suite will start running immediately and give you the latest results in the terminal.
+                        The great
+                        thing is that as soon as update your code the app immediately runs the tests again "in the
+                        background" and
+                        seamlessly updates the terminal without any distracting flickers.</p>
+                </div>
+
+                <div class="medium-6 columns">
+                    <h3>First install fswatch with brew</h3>
+                    <pre class="panel"><code>brew install fswatch</code></pre>
+
+                    <h3>Paste into ~/.bash_profile</h3>
+                    <pre class="panel"><code># Its Continuous
 function tdd {
-    clear; vendor/bin/phpunit
+    clear; vendor/bin/<span class="package-exec">phpunit</span>
     fswatch ./src:./lib:./tests \
-    'O=$(vendor/bin/phpunit); \
+    'O=$(vendor/bin/<span class="package-exec">phpunit</span>); \
     clear; \
     echo "$O"'
 }</code></pre>
-    </div>
-</div>
+                </div>
+            </section>
 
-<div class="row">
-    <div class="medium-12 columns">
-        <hr/>
+            <a class="exit-off-canvas"></a>
+
+        </div>
     </div>
+
 </div>
 
 <div class="row">
@@ -127,7 +152,8 @@ function tdd {
             feature it right here on the home page for everyone to see. Here's some ideas to get you started:</p>
 
         <ul>
-            <li><a href="http://apple.stackexchange.com/a/115373/26415">Send OS X style notifications</a> on failure.</li>
+            <li><a href="http://apple.stackexchange.com/a/115373/26415">Send OS X style notifications</a> on failure.
+            </li>
         </ul>
     </div>
     <div class="medium-6 columns">
@@ -157,16 +183,37 @@ function tdd {
 <script src="js/foundation.min.js"></script>
 <script>
     $(document).foundation();
-    
+
     // google analytics
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
     ga('create', 'UA-27830723-2', 'itscontinuous.com');
     ga('send', 'pageview');
 
+    // Package switcher
+    $(function () {
+        $('#package-list').on('click', 'a', function(e) {
+            e.preventDefault();
+            var package_exec = $(this).attr('data-package');
+            $('.left-off-canvas-toggle').click();
+
+            $('#package-name').text($(this).text());
+            $('#setup-steps .package').hide();
+            $('#setup-steps .package.' + package_exec).show();
+            $('.package-exec').text(package_exec);
+
+        });
+    });
 </script>
 </body>
 </html>
